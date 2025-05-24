@@ -1,0 +1,54 @@
+{
+  "name": "nvm-auto-switch",
+  "displayName": "NVM Auto Switch",
+  "description": "Automatically switch Node.js versions using nvm based on .nvmrc files",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Other"],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "nvm-auto-switch.switchVersion",
+        "title": "NVM: Switch to Project Node Version"
+      }
+    ],
+    "configuration": {
+      "title": "NVM Auto Switch",
+      "properties": {
+        "nvm-auto-switch.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable automatic Node.js version switching"
+        },
+        "nvm-auto-switch.showNotifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show notifications when switching Node.js versions"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "pnpm run check-types && node esbuild.js --production",
+    "watch": "node esbuild.js --watch",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "check-types": "tsc -p . --noEmit",
+    "lint": "eslint src --ext ts",
+    "clean": "rimraf out"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "@types/vscode": "^1.74.0",
+    "@vscode/test-electron": "^2.4.1",
+    "esbuild": "^0.24.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.2"
+  }
+}
