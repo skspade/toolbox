@@ -7,7 +7,8 @@ This is a monorepo containing multiple VSCode extensions.
 ```
 .
 ├── packages/          # VSCode extension packages
-│   └── scratches/    # Scratches extension
+│   ├── scratches/    # Scratches extension
+│   └── jest-runner/  # Jest runner extension
 ├── shared/           # Shared utilities and libraries
 └── pnpm-workspace.yaml
 ```
@@ -64,4 +65,13 @@ pnpm run package
 
 ## Extensions
 
-- **Scratches** - Create and manage scratch files of any type
+### Scratches
+Create and manage scratch files of any type in a dedicated `.scratches` directory within your project.
+
+### Jest Runner
+Run and debug Jest tests with WebStorm-like functionality:
+- Inline run/debug buttons above each test
+- Test explorer tree view in the sidebar
+- Full debugging support with breakpoints
+- Support for test modifiers (.only, .skip)
+- Multiple ways to run tests (buttons, tree view, commands)

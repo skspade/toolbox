@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a VSCode extension that provides scratch file functionality for creating and managing temporary scratch files within VSCode projects.
+This is a monorepo containing multiple VSCode extensions:
+1. **Scratches** - Provides scratch file functionality for creating and managing temporary scratch files within VSCode projects
+2. **Jest Runner** - Provides WebStorm-like Jest test running and debugging capabilities
 
 ## Development Commands
 
@@ -36,16 +38,23 @@ pnpm clean
 
 ## Architecture
 
-The extension follows a standard VSCode extension structure:
+This is a monorepo using pnpm workspaces. Each extension follows a standard VSCode extension structure:
 - Entry point: `src/extension.ts` - Contains the `activate()` and `deactivate()` functions
 - Build system: Uses esbuild for fast bundling with watch mode support
 - Module format: CommonJS (required for VSCode compatibility)
 - TypeScript configuration: Strict mode enabled with target ES2021
 
-Key functionality:
+### Scratches Extension
 - Creates scratch files in a project-specific `.scratches` directory
 - Provides commands accessible via Command Palette or keybindings
 - Keybindings: `Cmd+Alt+S` (create scratch), `Cmd+Alt+O` (open scratch)
+
+### Jest Runner Extension
+- Parses Jest test files to detect test structure
+- Provides CodeLens (inline buttons) above tests
+- Implements test explorer tree view
+- Supports full debugging with breakpoints
+- Handles test execution in terminal or debug mode
 
 ## Testing
 
