@@ -8,7 +8,8 @@ This is a monorepo containing multiple VSCode extensions.
 .
 ├── packages/          # VSCode extension packages
 │   ├── scratches/    # Scratches extension
-│   └── jest-runner/  # Jest runner extension
+│   ├── jest-runner/  # Jest runner extension
+│   └── nvm-auto-switch/ # NVM Auto Switch extension
 ├── shared/           # Shared utilities and libraries
 └── pnpm-workspace.yaml
 ```
@@ -80,3 +81,12 @@ Run and debug Jest tests with WebStorm-like functionality:
 - Full debugging support with breakpoints
 - Support for test modifiers (.only, .skip)
 - Multiple ways to run tests (buttons, tree view, commands)
+
+### NVM Auto Switch
+
+Automatically switch Node.js versions using nvm based on `.nvmrc` files:
+
+- Automatic detection and switching when opening projects
+- File watching for `.nvmrc` changes
+- Manual command to trigger version switching
+- Configurable notifications
