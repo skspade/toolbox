@@ -10,7 +10,8 @@
     "lint": "pnpm -r run lint",
     "check-types": "pnpm -r run check-types",
     "package": "pnpm -r run package",
-    "clean": "pnpm -r exec rimraf dist out"
+    "clean": "pnpm -r exec rimraf dist out",
+    "install-all": "./install-all.sh"
   },
   "devDependencies": {
     "@types/node": "20.x",
