@@ -1,71 +1,48 @@
-# scratches README
+# VSCode Scratches
 
-This is the README for your extension "scratches". After writing up a brief description, we recommend including the following sections.
+A JetBrains-style scratch files extension for Visual Studio Code and Cursor IDE. Create temporary code snippets in any language without cluttering your project.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Quick Creation**: Press `Ctrl+Alt+S` (Windows/Linux) or `Cmd+Alt+S` (Mac) to create a new scratch file
+- **25+ Languages**: Support for JavaScript, TypeScript, Python, Java, C++, Go, Rust, and many more
+- **Smart Templates**: Pre-configured boilerplate code for languages that need it
+- **Project Isolation**: Each project gets its own scratch files directory
+- **File Management**: List, open, and bulk delete scratch files
 
-For example if there is an image subfolder under your extension project workspace:
+## Usage
 
-\!\[feature X\]\(images/feature-x.png\)
+### Create a Scratch File
+- Press `Ctrl+Alt+S` (Windows/Linux) or `Cmd+Alt+S` (Mac)
+- Select a language from the quick pick menu
+- Start coding immediately with smart cursor positioning
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### List Scratch Files
+- Press `Ctrl+Alt+O` (Windows/Linux) or `Cmd+Alt+O` (Mac)
+- Select a scratch file to open it
+
+### Other Commands
+- **Delete Scratch Files**: Use Command Palette → "Scratches: Delete Scratch Files"
+- **Show Storage Location**: Use Command Palette → "Scratches: Show Scratch Files Location"
+
+## Storage
+
+Scratch files are stored in:
+- `~/.vscode-scratches/[project-name]-[hash]/`
+- Each project has its own isolated directory
+- Files are named with timestamps for easy identification
+
+## Supported Languages
+
+JavaScript, TypeScript, Python, Java, C#, C++, C, Go, Rust, Ruby, PHP, Swift, Kotlin, HTML, CSS, SCSS, JSON, YAML, XML, Markdown, SQL, Shell Script, PowerShell, Dockerfile, and Plain Text.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- VS Code 1.100.0 or higher
+- Works with Cursor IDE
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.1
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Initial release with core scratch file functionality.
