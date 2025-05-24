@@ -15,10 +15,5 @@
       "@vscode-extensions/*": ["packages/*/src"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "out",
-    ".vscode-test"
-  ]
+  "exclude": ["node_modules", "dist", "out", ".vscode-test"]
 }

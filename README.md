@@ -45,6 +45,7 @@ pnpm check-types
 ### Adding a New Extension
 
 1. Create a new directory in `packages/`:
+
    ```bash
    mkdir packages/my-new-extension
    ```
@@ -66,10 +67,14 @@ pnpm run package
 ## Extensions
 
 ### Scratches
-Create and manage scratch files of any type in a dedicated `.scratches` directory within your project.
+
+Create and manage scratch files of any type in a dedicated `.scratches`
+directory within your project.
 
 ### Jest Runner
+
 Run and debug Jest tests with WebStorm-like functionality:
+
 - Inline run/debug buttons above each test
 - Test explorer tree view in the sidebar
 - Full debugging support with breakpoints

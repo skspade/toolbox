@@ -3,11 +3,21 @@
   "displayName": "Jest Runner",
   "description": "Run and debug Jest tests with inline buttons and test explorer",
   "version": "0.0.1",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.74.0"
   },
-  "categories": ["Testing", "Debuggers"],
-  "keywords": ["jest", "test", "testing", "debug", "runner"],
+  "categories": [
+    "Testing",
+    "Debuggers"
+  ],
+  "keywords": [
+    "jest",
+    "test",
+    "testing",
+    "debug",
+    "runner"
+  ],
   "activationEvents": [
     "workspaceContains:**/jest.config.*",
     "workspaceContains:**/package.json"
@@ -98,7 +108,11 @@
         "jest-runner.debugOptions": {
           "type": "object",
           "default": {
-            "args": ["--runInBand", "--no-cache", "--no-coverage"],
+            "args": [
+              "--runInBand",
+              "--no-cache",
+              "--no-coverage"
+            ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen"
           },

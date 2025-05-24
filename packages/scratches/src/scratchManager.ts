@@ -41,7 +41,7 @@ export class ScratchManager {
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
       const char = str.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
+      hash = (hash << 5) - hash + char;
       hash = hash & hash;
     }
     return Math.abs(hash).toString(36).substring(0, 8);
@@ -70,7 +70,7 @@ export class ScratchManager {
         const lastChar = document.lineAt(lastLine).text.length;
         const templateLines = fileType.template.split('\n');
         let cursorLine = Math.floor(templateLines.length / 2);
-        
+
         for (let i = 0; i < templateLines.length; i++) {
           if (templateLines[i].includes('    ') || templateLines[i].includes('\t')) {
             cursorLine = i;
@@ -120,14 +120,14 @@ export class ScratchManager {
   getProjectInfo(): { name: string; path: string } {
     const projectDir = this.getProjectDirectory();
     const workspaceFolders = vscode.workspace.workspaceFolders;
-    
+
     if (!workspaceFolders || workspaceFolders.length === 0) {
       return { name: 'No Workspace', path: projectDir };
     }
 
     return {
       name: path.basename(workspaceFolders[0].uri.fsPath),
-      path: projectDir
+      path: projectDir,
     };
   }
 }

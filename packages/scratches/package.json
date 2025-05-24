@@ -4,6 +4,7 @@
   "description": "Create a scratch file of any type!",
   "version": "0.0.1",
   "publisher": "s900mhz",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.74.0"
   },
