@@ -1,0 +1,141 @@
+{
+  "name": "jest-runner",
+  "displayName": "Jest Runner",
+  "description": "Run and debug Jest tests with inline buttons and test explorer",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Testing", "Debuggers"],
+  "keywords": ["jest", "test", "testing", "debug", "runner"],
+  "activationEvents": [
+    "workspaceContains:**/jest.config.*",
+    "workspaceContains:**/package.json"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "jest-runner.runTest",
+        "title": "Run Jest Test"
+      },
+      {
+        "command": "jest-runner.debugTest",
+        "title": "Debug Jest Test"
+      },
+      {
+        "command": "jest-runner.runTestFile",
+        "title": "Run All Tests in File"
+      },
+      {
+        "command": "jest-runner.debugTestFile",
+        "title": "Debug All Tests in File"
+      },
+      {
+        "command": "jest-runner.runAllTests",
+        "title": "Run All Jest Tests"
+      },
+      {
+        "command": "jest-runner.refresh",
+        "title": "Refresh Jest Tests",
+        "icon": "$(refresh)"
+      }
+    ],
+    "views": {
+      "test": [
+        {
+          "id": "jestTestExplorer",
+          "name": "Jest Tests",
+          "icon": "$(beaker)",
+          "contextualTitle": "Jest Test Explorer"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "jest-runner.refresh",
+          "when": "view == jestTestExplorer",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "jest-runner.runTestFile",
+          "when": "resourceExtname =~ /\\.(test|spec)\\.(js|jsx|ts|tsx)$/",
+          "group": "testing"
+        },
+        {
+          "command": "jest-runner.debugTestFile",
+          "when": "resourceExtname =~ /\\.(test|spec)\\.(js|jsx|ts|tsx)$/",
+          "group": "testing"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Jest Runner",
+      "properties": {
+        "jest-runner.jestPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to Jest executable (auto-detected if empty)"
+        },
+        "jest-runner.projectPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the project root (auto-detected if empty)"
+        },
+        "jest-runner.configPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to Jest config file (auto-detected if empty)"
+        },
+        "jest-runner.showCodeLens": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show run/debug buttons above tests"
+        },
+        "jest-runner.debugOptions": {
+          "type": "object",
+          "default": {
+            "args": ["--runInBand", "--no-cache", "--no-coverage"],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+          },
+          "description": "Additional options for debugging"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "test": "node ./dist/test/runTest.js",
+    "pretest": "npm run build && tsc -p . --outDir dist",
+    "lint": "eslint src --ext ts",
+    "check-types": "tsc --noEmit",
+    "package": "pnpm build && vsce package --no-dependencies",
+    "clean": "rimraf dist *.vsix"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "^20.x",
+    "@types/mocha": "^10.x",
+    "@types/sinon": "^17.x",
+    "@types/glob": "^8.x",
+    "@typescript-eslint/eslint-plugin": "^6.x",
+    "@typescript-eslint/parser": "^6.x",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8",
+    "esbuild": "^0.19.x",
+    "eslint": "^8.x",
+    "rimraf": "^5.x",
+    "typescript": "^5.x",
+    "mocha": "^10.x",
+    "sinon": "^17.x",
+    "glob": "^10.x"
+  },
+  "dependencies": {
+    "jest-editor-support": "^31.1.1"
+  }
+}
