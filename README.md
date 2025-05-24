@@ -1,48 +1,67 @@
-# VSCode Scratches
+# VSCode Extensions Monorepo
 
-A JetBrains-style scratch files extension for Visual Studio Code and Cursor IDE. Create temporary code snippets in any language without cluttering your project.
+This is a monorepo containing multiple VSCode extensions.
 
-## Features
+## Structure
 
-- **Quick Creation**: Press `Ctrl+Alt+S` (Windows/Linux) or `Cmd+Alt+S` (Mac) to create a new scratch file
-- **25+ Languages**: Support for JavaScript, TypeScript, Python, Java, C++, Go, Rust, and many more
-- **Smart Templates**: Pre-configured boilerplate code for languages that need it
-- **Project Isolation**: Each project gets its own scratch files directory
-- **File Management**: List, open, and bulk delete scratch files
+```
+.
+├── packages/          # VSCode extension packages
+│   └── scratches/    # Scratches extension
+├── shared/           # Shared utilities and libraries
+└── pnpm-workspace.yaml
+```
 
-## Usage
+## Development
 
-### Create a Scratch File
-- Press `Ctrl+Alt+S` (Windows/Linux) or `Cmd+Alt+S` (Mac)
-- Select a language from the quick pick menu
-- Start coding immediately with smart cursor positioning
+### Prerequisites
 
-### List Scratch Files
-- Press `Ctrl+Alt+O` (Windows/Linux) or `Cmd+Alt+O` (Mac)
-- Select a scratch file to open it
+- Node.js >= 18
+- pnpm >= 8
 
-### Other Commands
-- **Delete Scratch Files**: Use Command Palette → "Scratches: Delete Scratch Files"
-- **Show Storage Location**: Use Command Palette → "Scratches: Show Scratch Files Location"
+### Setup
 
-## Storage
+```bash
+# Install dependencies
+pnpm install
 
-Scratch files are stored in:
-- `~/.vscode-scratches/[project-name]-[hash]/`
-- Each project has its own isolated directory
-- Files are named with timestamps for easy identification
+# Build all extensions
+pnpm build
 
-## Supported Languages
+# Watch mode for development
+pnpm watch
 
-JavaScript, TypeScript, Python, Java, C#, C++, C, Go, Rust, Ruby, PHP, Swift, Kotlin, HTML, CSS, SCSS, JSON, YAML, XML, Markdown, SQL, Shell Script, PowerShell, Dockerfile, and Plain Text.
+# Run tests
+pnpm test
 
-## Requirements
+# Lint
+pnpm lint
 
-- VS Code 1.100.0 or higher
-- Works with Cursor IDE
+# Type check
+pnpm check-types
+```
 
-## Release Notes
+### Adding a New Extension
 
-### 0.0.1
+1. Create a new directory in `packages/`:
+   ```bash
+   mkdir packages/my-new-extension
+   ```
 
-Initial release with core scratch file functionality.
+2. Copy the structure from an existing extension or create from scratch
+3. Add the extension's `package.json` with proper VSCode extension metadata
+4. Run `pnpm install` from the root to link everything
+
+### Publishing
+
+Each extension can be published independently:
+
+```bash
+cd packages/my-extension
+pnpm run package
+# Then use vsce to publish
+```
+
+## Extensions
+
+- **Scratches** - Create and manage scratch files of any type

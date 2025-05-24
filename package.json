@@ -1,105 +1,27 @@
 {
-  "name": "scratches",
-  "displayName": "Scratches",
-  "description": "Create a scratch file of any type!",
-  "version": "0.0.1",
-  "publisher": "s900mhz",
-  "engines": {
-    "vscode": "^1.74.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [],
-  "main": "./dist/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "scratches.createScratch",
-        "title": "Create Scratch File",
-        "category": "Scratches",
-        "icon": "$(new-file)"
-      },
-      {
-        "command": "scratches.listScratches",
-        "title": "Open Scratch File",
-        "category": "Scratches",
-        "icon": "$(list-flat)"
-      },
-      {
-        "command": "scratches.deleteScratch",
-        "title": "Delete Scratch Files",
-        "category": "Scratches",
-        "icon": "$(trash)"
-      },
-      {
-        "command": "scratches.showInfo",
-        "title": "Show Scratch Files Location",
-        "category": "Scratches",
-        "icon": "$(info)"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "scratches.createScratch",
-        "key": "ctrl+alt+s",
-        "mac": "cmd+alt+s",
-        "when": "editorTextFocus"
-      },
-      {
-        "command": "scratches.listScratches",
-        "key": "ctrl+alt+o",
-        "mac": "cmd+alt+o"
-      }
-    ],
-    "menus": {
-      "commandPalette": [
-        {
-          "command": "scratches.createScratch"
-        },
-        {
-          "command": "scratches.listScratches"
-        },
-        {
-          "command": "scratches.deleteScratch"
-        },
-        {
-          "command": "scratches.showInfo"
-        }
-      ],
-      "editor/context": [
-        {
-          "command": "scratches.createScratch",
-          "group": "scratches"
-        }
-      ]
-    }
-  },
+  "name": "@vscode-extensions/monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VSCode Extensions Monorepo",
   "scripts": {
-    "vscode:prepublish": "pnpm run package",
-    "compile": "pnpm run check-types && pnpm run lint && node esbuild.js",
-    "watch": "npm-run-all -p watch:*",
-    "watch:esbuild": "node esbuild.js --watch",
-    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
-    "package": "pnpm run check-types && pnpm run lint && node esbuild.js --production",
-    "compile-tests": "tsc -p . --outDir out",
-    "watch-tests": "tsc -p . -w --outDir out",
-    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
-    "check-types": "tsc --noEmit",
-    "lint": "eslint src",
-    "test": "vscode-test"
+    "build": "pnpm -r run compile",
+    "watch": "pnpm -r --parallel run watch",
+    "test": "pnpm -r run test",
+    "lint": "pnpm -r run lint",
+    "check-types": "pnpm -r run check-types",
+    "package": "pnpm -r run package",
+    "clean": "pnpm -r exec rimraf dist out"
   },
   "devDependencies": {
-    "@types/vscode": "^1.74.0",
-    "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
     "@typescript-eslint/eslint-plugin": "^8.31.1",
     "@typescript-eslint/parser": "^8.31.1",
     "eslint": "^9.25.1",
-    "esbuild": "^0.25.3",
-    "npm-run-all": "^4.1.5",
     "typescript": "^5.8.3",
-    "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.5.2"
+    "rimraf": "^6.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
   }
 }
